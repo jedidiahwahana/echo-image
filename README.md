@@ -13,7 +13,7 @@ This repository demonstrates how to create a bot application with **Spring frame
 * Create Cloudinary account
 > [Cloudinary](http://cloudinary.com)
 
-* Add `application.properties` file in *src/main/resources* directory, and fill it with your Cloudinary's cloud name, api key, and api secret, like the following:
+* Add `application.properties` file in *src/main/resources* directory, and fill it with your Cloudinary's cloud name, api key, and api secret, channel secret and channel access token, like the following:
 
 	```ini
 com.cloudinary.cloud_name=<your_cloud_name>
@@ -54,9 +54,9 @@ com.linecorp.channel_access_token=<your_channel_access_token>
 
 	```java
 	Map uploadResult = cloudinary.uploader().upload(path.toFile(), ObjectUtils.emptyMap());
-    	System.out.println(uploadResult.toString());
-    	JSONObject jUpload = new JSONObject(uploadResult);
-    	uploadURL = jUpload.getString("secure_url");
+    System.out.println(uploadResult.toString());
+    JSONObject jUpload = new JSONObject(uploadResult);
+    uploadURL = jUpload.getString("secure_url");
 	```
 	**INFO** Image needs to be store because LINE Messaging API needs image URL to push or reply the image message to user.
 	**INFO** URL must be secure **(HTTPS)**, Therefore user *secure_url* in JSON Object response from cloudinary
